@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>Z_Info</RootNamespace>
+        <Nullable>enable</Nullable>
+        <LangVersion>10</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\Z-Info.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile>bin\Release\Z-Info.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="GeoJSON" Version="2.3.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Support\Common\Common.csproj" />
+      <ProjectReference Include="..\PluginShared\PluginShared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Responses\Compartments.json" />
+      <_ContentIncludedByDefault Remove="Responses\Deelprocess.json" />
+      <_ContentIncludedByDefault Remove="Responses\MeasurementObjects.json" />
+      <_ContentIncludedByDefault Remove="Responses\Parameters.json" />
+      <_ContentIncludedByDefault Remove="Responses\Qualities.json" />
+      <_ContentIncludedByDefault Remove="Responses\Quantities.json" />
+      <_ContentIncludedByDefault Remove="Responses\RequestResponse.json" />
+      <_ContentIncludedByDefault Remove="Responses\Units.json" />
+    </ItemGroup>
+
+</Project>

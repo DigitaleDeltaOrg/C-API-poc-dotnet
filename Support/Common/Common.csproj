@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Shared</RootNamespace>
+        <LangVersion>10</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\Common.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile>bin\Release\Common.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="GeoJSON" Version="2.3.1" />
+      <PackageReference Include="GeoLibrary" Version="1.1.0" />
+      <PackageReference Include="IdentityModel" Version="5.1.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\Storage\StorageSql\bin\Debug\net6.0\Common.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>
