@@ -698,7 +698,7 @@ public sealed class FilterParser
 			return;
 		}
 		
-		var parts = value.Split(",");
+		var parts = value.TrimStart('[').TrimEnd(']').Split(",");
 		foreach (var part in parts)
 		{
 			if ((!part.StartsWith("'") && !part.EndsWith("'") && (!part.StartsWith("\"") && !part.EndsWith("\""))))
