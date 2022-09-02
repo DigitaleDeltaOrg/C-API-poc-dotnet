@@ -20,6 +20,20 @@ public class Startup
 
 	public void ConfigureServices(IServiceCollection services)
 	{
+		// Default Policy
+		services.AddCors(options =>
+		{
+			options.AddDefaultPolicy(
+				builder =>
+				{
+					builder
+						.AllowAnyOrigin()
+						.AllowAnyHeader()
+						.AllowAnyMethod()
+						.SetIsOriginAllowed(isOriginAllowed: _ => true);
+				});
+		});
+
 		services.AddScoped<IStorageProvider>(x => ActivatorUtilities.CreateInstance<CApiJsonStorage.CApiJsonStore>(x, Configuration.GetValue<string>("StorageFolder"))); 
 		services.AddControllers().AddNewtonsoftJson(o => { o.SerializerSettings.Converters.Add(new StringEnumConverter()); });
 		services.AddSwaggerGenNewtonsoftSupport();
@@ -46,6 +60,7 @@ public class Startup
 		});
 		app.UseHttpsRedirection();
 		app.UseRouting();
+		app.UseCors();
 		app.UseAuthorization();
 		app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 	}
